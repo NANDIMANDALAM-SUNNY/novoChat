@@ -21,7 +21,7 @@ const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://novo-chat.netlify.app',
+    origin: '*',
     methods: ['GET', 'POST']
   }
 })
