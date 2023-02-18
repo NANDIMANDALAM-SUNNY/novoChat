@@ -4,7 +4,7 @@ const app = express();
 const userRoutes = require('./routes/userRoutes')
 const User = require('./models/User');
 const Message = require('./models/Message')
-const rooms = [ 'tech', 'finance', 'science' ];
+const rooms = [ 'Tech 💻', 'science 🔬','Finance 💰', 'Movies 📽️' ];
 const cors = require('cors');
 require('dotenv').config()
 
