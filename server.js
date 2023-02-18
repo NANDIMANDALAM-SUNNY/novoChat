@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const logger = require('morgan');
 const app = express();
@@ -9,7 +10,6 @@ require('dotenv').config()
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cors());
 app.use(logger('dev'));
 
 
@@ -17,6 +17,7 @@ app.use('/users', userRoutes)
 require('./connection')
 
 const server = require('http').createServer(app);
+app.use(cors());
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server, {
   cors: {
@@ -26,7 +27,6 @@ const io = require('socket.io')(server, {
 })
 
 
-const cors = require('cors');
 async function getLastMessagesFromRoom(room){
   let roomMessages = await Message.aggregate([
     {$match: {to: room}},
