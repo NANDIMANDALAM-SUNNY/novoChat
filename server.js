@@ -5,7 +5,6 @@ const userRoutes = require('./routes/userRoutes')
 const User = require('./models/User');
 const Message = require('./models/Message')
 const rooms = [ 'Tech 💻', 'Science 🔬','Finance 💰', 'Movies 📽️' ];
-const cors = require('cors');
 require('dotenv').config()
 
 app.use(express.urlencoded({extended: true}));
@@ -21,12 +20,13 @@ const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'novo-chat.netlify.app',
+    origin: 'https://novo-chat.netlify.app',
     methods: ['GET', 'POST']
   }
 })
 
 
+const cors = require('cors');
 async function getLastMessagesFromRoom(room){
   let roomMessages = await Message.aggregate([
     {$match: {to: room}},
