@@ -4,7 +4,7 @@ const app = express();
 const userRoutes = require('./routes/userRoutes')
 const User = require('./models/User');
 const Message = require('./models/Message')
-const rooms = [ 'Tech 💻', 'science 🔬','Finance 💰', 'Movies 📽️' ];
+const rooms = [ 'Tech 💻', 'Science 🔬','Finance 💰', 'Movies 📽️' ];
 const cors = require('cors');
 require('dotenv').config()
 
@@ -21,7 +21,7 @@ const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'novo-chat.netlify.app',
     methods: ['GET', 'POST']
   }
 })
