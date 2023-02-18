@@ -7,16 +7,16 @@ const User = require('./models/User');
 const Message = require('./models/Message')
 const rooms = [ 'Tech 💻', 'Science 🔬','Finance 💰', 'Movies 📽️' ];
 require('dotenv').config()
+require('./connection')
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(logger('dev'));
+app.use(cors());
 
 
 app.use('/users', userRoutes)
-require('./connection')
 
-app.use(cors());
 const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server, {
@@ -24,7 +24,9 @@ const io = require('socket.io')(server, {
     origin: '*',
     methods: ['GET', 'POST']
   }
-})
+}
+)
+
 
 
 async function getLastMessagesFromRoom(room){
