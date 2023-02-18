@@ -18,6 +18,10 @@ const  Navigation =()=> {
         e.preventDefault();
         await logoutUser(user);
         // redirect to home page
+        console.log(localStorage.getItem("persist:root"))
+        await localStorage.removeItem("persist:root")
+        console.log(localStorage.getItem("persist:root"))
+
         navigate("/login");
     }
 
