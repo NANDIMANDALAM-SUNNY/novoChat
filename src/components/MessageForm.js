@@ -141,7 +141,7 @@ function MessageForm() {
                             <InputEmoji
                             value={message}
                             onChange={handleChange}
-                            cleanOnEnter
+                        
                             placeholder="Type a message"
                             
                             />
