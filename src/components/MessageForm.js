@@ -136,20 +136,20 @@ function MessageForm() {
                             
                 <Row>
 
-                    <Col md={11} style={{paddingRight:'0',marginRight:0}} >
+                    <Col md={9} style={{paddingRight:'0',marginRight:0}} >
                         <Form.Group>
                             <InputEmoji
                             value={message}
                             onChange={handleChange}
-                            cleanOnEnter
+                            
                             placeholder="Type a message"
                             
                             />
                         </Form.Group>
                     </Col>
-                    <Col md={1} style={{marginRight:'0',marginLeft:'0',paddingLeft:"0",paddingBottom:""}} >
+                    <Col md={3} style={{marginRight:'0',marginLeft:'0',paddingLeft:"0",paddingBottom:""}} >
                         <Button variant="primary" onClick={handleSubmit} style={{ width: "100%",paddingTop:"12px", backgroundColor: "orange",paddingBottom:"12px" }} disabled={!user}>
-                            <i className="fas fa-paper-plane"></i>
+                         click here to  send Message   <i className="fas fa-paper-plane"></i>
                         </Button>
                     </Col>
                 </Row>

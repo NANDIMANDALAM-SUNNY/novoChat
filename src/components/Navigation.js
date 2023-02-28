@@ -28,7 +28,9 @@ const  Navigation =()=> {
 
 useEffect(() => {
 
-
+if(!user){
+    navigate("/login");
+}
 
 }, [])
 
