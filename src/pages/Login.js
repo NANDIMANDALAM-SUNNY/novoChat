@@ -109,10 +109,13 @@ const Login = () => {
                     <h2 className="fw-bold mb-5 text-uppercase">Login</h2>
                     <div className="mb-1">
                         <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email}  className="form-control " />
+                        <p style={{color:"black"}}>login - demoguvi@gmail.com</p>
                         <label className="form-label" >Email</label>
                       </div>
                     <div className="mb-1">
                       <input type="password" id="password" name="password"  onChange={(e) => setPassword(e.target.value)} value={password} className="form-control " />
+                      <p style={{color:"black"}}>password - demoguvi@gmail.com</p>
+
                       <label className="form-label">Password</label>
                     </div>
                     <button className="btn btn-outline-light btn-lg px-5"  id="btn-submit"  onClick={handleLogin}>
