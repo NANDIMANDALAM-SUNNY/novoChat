@@ -68,13 +68,23 @@ import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {  Bounce } from 'react-toastify';
+import ReCAPTCHA from "react-google-recaptcha";
+ 
 
+// Site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+// Secret key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
 const Login = () => {
+  const [verified,setVerified] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { socket } = useContext(AppContext);
+    function onChange(value) {
+      console.log("Captcha value:", value);
+      setVerified(true)
+    }
+     
     const [loginUser, { isLoading, error }] = useLoginUserMutation();
     const handleLogin = (e) => {
         e.preventDefault();
@@ -118,8 +128,15 @@ const Login = () => {
 
                       <label className="form-label">Password</label>
                     </div>
-                    <button className="btn btn-outline-light btn-lg px-5"  id="btn-submit"  onClick={handleLogin}>
-                    {isLoading ? <Spinner animation="grow" /> : "Login"}
+                    <div className="mb-3 d-flex justify-content-center" >
+                    <ReCAPTCHA
+                      sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                      onChange={onChange}
+                    />
+                    </div>
+                    <button disabled={!verified} className="btn btn-outline-light btn-lg px-5"  id="btn-submit"  onClick={handleLogin}>
+                    {!verified ? "Please verify captcha":"Login"}
+                    {/* {isLoading && !verified ? <Spinner animation="grow" /> : "Please fill the captcha to  Login"} */}
                     </button>
                   </div>
                   <div>
